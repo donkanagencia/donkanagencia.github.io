@@ -135,15 +135,22 @@ chkIt.innerHTML = product;
 descrIt.innerHTML = description; 
 if (currProd.cat != ".")
 {
-priceT.innerHTML = price + " " + currProd.cat;
+priceT.innerHTML = price + "<br>" + currProd.cat;
 }
+else{
+
+priceT.innerHTML = price;
+
+}
+
+
 if (currProd.cat === ""){
 description = " que " + description;
 }
 
 currProd.name = product;
 currProd.desc = description;
-currProd.price = price + currProd.cat;
+currProd.price = price + "\n" + currProd.cat;
 
 
 
@@ -165,6 +172,7 @@ function chkOut(){
 	else { con = "";}
 
 	let message = "Hola, me interesa adquirir "+ currProd.name + con + currProd.desc + ".\nPor " + currProd.price + "";
+	message = message.replace('<br>', '');
 	let encoded = encodeURI(message);
 	let dest = "https://donkanagencia.com";
 

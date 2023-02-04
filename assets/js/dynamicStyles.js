@@ -1,6 +1,6 @@
 let butt = document.getElementById("butt");
 let grays = document.getElementsByClassName("grayOut");
-
+let newBanner = document.getElementsByClassName("newBan");
 
 
 let i = 0;
@@ -8,11 +8,21 @@ let i = 0;
 for (let gray of grays){
  
  	i++;
-	let toInsert = '<div class="grayDiv"><img class="csBanner" src="cs_banner.png" alt="comming soon"></div>';
+	let toInsert = '<div class="grayDiv"><img class="csBanner" src="assets/img/cs_banner.png" alt="comming soon"></div>';
 	gray.insertAdjacentHTML('afterbegin', toInsert);
 	
  	/* available options beforebegin, afterbegin, beforeend, afterend */
 }
+
+for (let newB of newBanner){
+ 
+ 	i++;
+	let toInsert = '<div class="newDiv"><img class="nwBanner" src="assets/img/cartel_nuevo2.png" alt="nuevo"></div>';
+	newB.insertAdjacentHTML('beforebegin', toInsert);
+	
+ 	/* available options beforebegin, afterbegin, beforeend, afterend */
+}
+
 
 
 butt.addEventListener("click",function(){

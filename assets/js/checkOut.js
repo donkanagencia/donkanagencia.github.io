@@ -78,18 +78,10 @@ let id = this.id
 		tipo = "error";
 	}
 	
-
-	if (arrId[2]=== "m"){
-		plan = "mensual";
-	}
-	else{
-		plan = "anual";
-	}
-
-	description = " " + tipo + " de pago " + plan;
+	product = product + " " + tipo;
 
 
-
+	
 
 	let ptagId = "p_"+ id;
 	let ptag = document.getElementById(ptagId);
@@ -97,11 +89,29 @@ let id = this.id
 	price = ptag.textContent.replace("/", " al ");
 
 
+	if (arrId[2]=== "m"){
+		plan = "mensual";
+		currProd.cat = ".";
+	}
+	else{
+		plan = "anual";
 
+		let subtotal = ptag.textContent.replace("USD", "");
+
+		subtotal = subtotal.replace("/Mes", "");
+
+
+		total = parseFloat(subtotal) * 12;
+		currProd.cat = " [Precio total anual: USD" + total + " ]";
+	}
+
+
+	description = " A pagar de forma " + plan;
 
 	}
 	else{
 
+	currProd.cat = "";
 
 	let parent = this.parentNode;
 	let badge = parent.firstChild;
@@ -123,12 +133,17 @@ let priceT = document.getElementById('mPrice');
 
 chkIt.innerHTML = product;
 descrIt.innerHTML = description; 
-priceT.innerHTML = price;
-
+if (currProd.cat != ".")
+{
+priceT.innerHTML = price + " " + currProd.cat;
+}
+if (currProd.cat === ""){
+description = " que " + description;
+}
 
 currProd.name = product;
 currProd.desc = description;
-currProd.price = price;
+currProd.price = price + currProd.cat;
 
 
 
@@ -141,7 +156,15 @@ $('#checkIt').modal('toggle');
 
 function chkOut(){
 
-	let message = "Hola, me interesa adquirir "+ currProd.name + " que " + currProd.desc + " por " + currProd.price + "";
+	let con
+
+	if (currProd.cat != "")
+	{
+		con = ".\n"
+	}
+	else { con = "";}
+
+	let message = "Hola, me interesa adquirir "+ currProd.name + con + currProd.desc + ".\nPor " + currProd.price + "";
 	let encoded = encodeURI(message);
 	let dest = "https://donkanagencia.com";
 

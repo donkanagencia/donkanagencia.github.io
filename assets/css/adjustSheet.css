@@ -22,6 +22,40 @@ body {
   margin-left: -60px!important;
 }
 
+#dImg {
+  margin-left: -5%!important;
+}
+
+@media (min-width:380px) {
+  #dImg {
+    margin-left: 3%!important;
+  }
+}
+
+@media (min-width:420px) {
+  #dImg {
+    margin-left: 5%!important;
+  }
+}
+
+@media (min-width:450px) {
+  #dImg {
+    margin-left: 10%!important;
+  }
+}
+
+@media (min-width:500px) {
+  #dImg {
+    margin-left: 15%!important;
+  }
+}
+
+@media (min-width:576px) {
+  #dImg {
+    margin: auto!important;
+  }
+}
+
 @media (min-width:400px) {
   #heroPC {
     margin-left: 0px!important;
@@ -387,14 +421,14 @@ body {
 }
 
 .contDiv {
-  width: 50%;
+  width: 100%;
   align-content: center;
   display: flex;
 }
 
 @media (min-width:768px) {
   .qrDon {
-    width: 60%;
+    width: 50%;
     aspect-ratio: 1/1!important;
     display: none;
   }
@@ -417,7 +451,7 @@ body {
 
 @media (min-width:1200px) {
   .qrDon {
-    width: 50%;
+    width: 40%;
     aspect-ratio: 1/1!important;
     display: block;
   }
